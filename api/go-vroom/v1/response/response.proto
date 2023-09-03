@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package go_vroom.v1.response;
+
+option go_package = "go-vroom/api/go-vroom/v1/response;response";
+option java_multiple_files = true;
+option java_package = "go-vroom.v1.response";
+option objc_class_prefix = "APIGoVroomV1";
+
+
+message SolveResponse {
+  message Summary {
+    uint32 cost = 1;
+    uint32 routes = 2;
+    uint32 unassigned = 3;
+    repeated uint32 delivery = 4;
+    repeated uint32 pickup = 5;
+    uint32 setup = 6;
+    uint32 service = 7;
+    uint32 duration = 8;
+    uint32 waiting_time = 9;
+    uint32 distance = 10;
+    uint32 priority = 11;
+    repeated Violation violations = 12;
+  }
+
+  message UnassignedTask {
+    uint64 id = 1;
+    string type = 2;
+    repeated double location = 3;
+  }
+
+  message Route {
+    message Step {
+      enum StepType {
+        START = 0;
+        JOB = 1;
+        PICKUP = 2;
+        DELIVERY = 3;
+        BREAK = 4;
+        END = 5;
+      }
+
+      string type = 1;
+      string description = 2;
+      repeated double location = 3;
+      uint32 arrival = 4;
+      uint32 id = 5;
+      repeated uint32 load = 6;
+      uint32 setup = 7;
+      uint32 service = 8;
+      uint32 waiting_time = 9;
+      uint32 duration = 10;
+      uint32 distance = 11;
+      repeated Violation violations = 12;
+      string geometry = 13;
+    }
+
+    uint64 vehicle = 1;
+    string description = 2;
+    uint32 cost = 3;
+    repeated uint32 delivery = 4;
+    repeated uint32 pickup = 5;
+    uint32 setup = 6;
+    uint32 service = 7;
+    uint32 duration = 8;
+    uint32 waiting_time = 9;
+    uint32 distance = 10;
+    uint32 priority = 11;
+    repeated Step steps = 12;
+    repeated Violation violations = 13;
+  }
+
+  repeated UnassignedTask unassigned = 1;
+  Summary summary = 2;
+}
+
+message Violation {
+  enum Cause {
+    DELAY = 0;
+    LEAD_TIME = 1;
+    LOAD = 2;
+    MAX_TASKS = 3;
+    MAX_TRAVEL_TIME = 4;
+    MAX_LOAD = 5;
+    SKILLS = 6;
+    PRECEDENCE = 7;
+    MISSING_BREAK = 8;
+  }
+
+  Cause cause = 1;
+  uint32 duration = 2;
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package go_vroom.v1.types;
+
+import "go-vroom/v1/types/pickup.proto";
+import "go-vroom/v1/types/delivery.proto";
+
+option go_package = "go-vroom/api/go-vroom/v1/types;types";
+option java_multiple_files = true;
+option java_package = "go-vroom.v1.types";
+option objc_class_prefix = "APIGoVroomV1";
+
+message Shipment {
+  Pickup pickup = 1;
+  Delivery delivery = 2;
+  repeated uint32 amount = 3;
+  repeated uint32 skills = 4;
+  uint32 priority = 5;
+}
+

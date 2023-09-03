@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package go_vroom.v1.types;
+
+import "go-vroom/v1/types/task_type.proto";
+
+option go_package = "go-vroom/api/go-vroom/v1/types;types";
+option java_multiple_files = true;
+option java_package = "go-vroom.v1.types";
+option objc_class_prefix = "APIGoVroomV1";
+
+message Step {
+  TaskType type = 1;
+  uint64 id = 2;
+  uint32 service_at = 3;
+  uint32 service_after = 4;
+  uint32 service_before = 5;
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package go_vroom.v1.request;
+
+import "go-vroom/v1/types/job.proto";
+import "go-vroom/v1/types/shipment.proto";
+import "go-vroom/v1/types/vehicle.proto";
+
+option go_package = "go-vroom/api/go-vroom/v1/request;request";
+option java_multiple_files = true;
+option java_package = "go-vroom.v1.request";
+option objc_class_prefix = "APIGoVroomV1";
+
+message SolveRequest {
+  repeated v1.types.Job jobs = 1;
+  repeated v1.types.Shipment shipments = 2;
+  repeated v1.types.Vehicle vehicles = 3;
+}

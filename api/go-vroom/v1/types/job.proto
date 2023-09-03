@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package go_vroom.v1.types;
+
+import "go-vroom/v1/types/time_window.proto";
+import "go-vroom/v1/types/coordinates.proto";
+
+option go_package = "go-vroom/api/go-vroom/v1/types;types";
+option java_multiple_files = true;
+option java_package = "go-vroom.v1.types";
+option objc_class_prefix = "APIGoVroomV1";
+
+message Job {
+  uint64 id = 1;
+  Coordinates location = 2;
+  string description = 3;
+  uint32 setup = 4;
+  uint32 service = 5;
+  repeated uint32 delivery = 6;
+  repeated uint32 pickup = 7;
+  repeated uint32 skills = 8;
+  uint32 priority = 9;
+  repeated TimeWindow time_windows = 10;
+}

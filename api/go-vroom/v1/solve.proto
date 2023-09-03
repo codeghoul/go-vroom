@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package go_vroom.v1;
+
+import "google/api/annotations.proto";
+import "go-vroom/v1/request/request.proto";
+import "go-vroom/v1/response/response.proto";
+
+option go_package = "go-vroom/api/go-vroom/v1;v1";
+option java_multiple_files = true;
+option java_package = "go-vroom.v1";
+option objc_class_prefix = "APIGoVroomV1";
+
+// The Solve service definition.
+service Solve {
+  rpc Solve (v1.request.SolveRequest) returns (v1.response.SolveResponse) {
+    option (google.api.http) = {
+      post: "/solve"
+      body: "*"
+    };
+  }
+}

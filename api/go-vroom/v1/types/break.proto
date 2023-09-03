@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package go_vroom.v1.types;
+
+import "go-vroom/v1/types/time_window.proto";
+
+option go_package = "go-vroom/api/go-vroom/v1/types;types";
+option java_multiple_files = true;
+option java_package = "go-vroom.v1.types";
+option objc_class_prefix = "APIGoVroomV1";
+
+message Break {
+  uint64 id = 1;
+  string description = 2;
+  uint32 service = 3;
+  repeated TimeWindow time_windows = 4;
+  repeated uint32 max_load = 5;
+}

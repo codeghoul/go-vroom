@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package go_vroom.v1.types;
+
+option go_package = "go-vroom/api/go-vroom/v1/types;types";
+option java_multiple_files = true;
+option java_package = "go-vroom.v1.types";
+option objc_class_prefix = "APIGoVroomV1";
+
+message Cost {
+  uint32 fixed = 1;
+  uint32 per_hour = 2;
+}

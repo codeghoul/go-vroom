@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package go_vroom.v1.types;
+
+import "go-vroom/v1/types/time_window.proto";
+import "go-vroom/v1/types/coordinates.proto";
+import "go-vroom/v1/types/step.proto";
+import "go-vroom/v1/types/profile.proto";
+import "go-vroom/v1/types/cost.proto";
+import "go-vroom/v1/types/break.proto";
+
+option go_package = "go-vroom/api/go-vroom/v1/types;types";
+option java_multiple_files = true;
+option java_package = "go-vroom.v1.types";
+option objc_class_prefix = "APIGoVroomV1";
+
+message Vehicle {
+  uint64 id = 1;
+  string description = 2;
+  Profile profile = 3;
+  double speed_factor = 4;
+  Coordinates start = 5;
+  Coordinates end = 6;
+  repeated uint32 capacity = 7;
+  Cost costs = 8;
+  uint32 max_tasks = 9;
+  uint32 max_travel_time = 10;
+  repeated uint32 skills = 11;
+  TimeWindow time_window = 12;
+  repeated Break breaks = 13;
+  repeated Step steps = 14;
+}
